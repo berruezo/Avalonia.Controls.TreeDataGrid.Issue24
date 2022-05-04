@@ -66,6 +66,12 @@ namespace TreeDataGridDemo
             countries.TryGetRow(index)?.Focus();
         }
 
+        public void ClearChildrenClick(object sender, RoutedEventArgs e)
+        {
+            var vm = (MainWindowViewModel)DataContext!;
+            vm.Files.ClearChildrenClick();
+        }
+
         private void InitializeComponent()
         {
             AvaloniaXamlLoader.Load(this);

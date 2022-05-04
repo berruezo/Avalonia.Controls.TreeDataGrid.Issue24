@@ -41,6 +41,7 @@
     <TabItem Header="Files">
       <DockPanel>
         <DockPanel DockPanel.Dock="Top" Margin="0 4">
+          <Button Click="ClearChildrenClick">Clear children of first directory</Button>
           <ComboBox Items="{Binding Files.Drives}"
                     SelectedItem="{Binding Files.SelectedDrive}"
                     DockPanel.Dock="Left"/>

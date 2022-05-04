@@ -11,6 +11,7 @@ using Avalonia.Controls.Selection;
 using Avalonia.Controls.Templates;
 using Avalonia.Data;
 using Avalonia.Data.Converters;
+using Avalonia.Interactivity;
 using Avalonia.Layout;
 using Avalonia.Media.Imaging;
 using Avalonia.Platform;
@@ -214,9 +215,18 @@ namespace TreeDataGridDemo.ViewModels
             Source.RowSelection!.SelectedIndex = index;
         }
 
+        public void ClearChildrenClick()
+        {
+            if (_root == null)
+                return;
+
+            _root.Children[0]._children?.Clear();
+        }
+
         private void SelectionChanged(object? sender, TreeSelectionModelSelectionChangedEventArgs<FileTreeNodeModel> e)
         {
             var selectedPath = Source.RowSelection?.SelectedItem?.Path;
+
             this.RaiseAndSetIfChanged(ref _selectedPath, selectedPath, nameof(SelectedPath));
 
             foreach (var i in e.DeselectedItems)
